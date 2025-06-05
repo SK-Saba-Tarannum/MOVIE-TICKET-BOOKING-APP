@@ -19,7 +19,7 @@ const BookingPage = () => {
 
   const fetchShowDetails = async () => {
     try {
-      const res = await axios.get(`http://localhost:5001/api/bookings/seats/${showId}`, {
+      const res = await axios.get(`https://movie-ticket-booking-app-2.onrender.com/api/bookings/seats/${showId}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -51,7 +51,7 @@ const BookingPage = () => {
   const handleBooking = async () => {
     try {
       await axios.post(
-        'http://localhost:5001/api/bookings/',
+        'https://movie-ticket-booking-app-2.onrender.com/api/bookings/',
         {
           showId: parseInt(showId),
           numSeats: selectedSeats.length,
@@ -76,9 +76,7 @@ const BookingPage = () => {
     }
   };
 
-  // const columns = 20  ;
-  // const rows = Math.ceil(totalSeats / columns);
-
+  
   return (
     <>
       <Navbar />
