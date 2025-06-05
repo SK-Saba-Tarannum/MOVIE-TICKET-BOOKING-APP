@@ -30,7 +30,7 @@ const MovieCard = ({ movie, onEdit, onDelete }) => (
       </button>
       <button
         onClick={() => onDelete(movie.id)}
-        className="bg-red-500 flex gap-1 text-white hover:bg-teal-700 px-3 py-1 rounded-md text-sm"
+        className="bg-red-400 flex gap-1 text-black hover:bg-teal-700 px-3 py-1 rounded-md text-sm"
       >
         <Trash2 size={18}/>
         Delete

@@ -1,135 +1,3 @@
-// import * as bookingService from "../services/booking.service.js"                                
-
-// exports.getBookedSeats = async (req, res) => {
-//   try {
-//     const showId = parseInt(req.params.showId);
-//     const seats = await bookingService.getBookedSeats(showId);
-//     res.json(seats);
-//   } catch (err) {
-//     res.status(500).json({ error: err.message });
-//   }
-// };
-
-// exports.createBooking = async (req, res) => {
-//   const userId = req.user.id;
-//   const { showId, numSeats, amount, seats } = req.body;
-
-//   try {
-//     const booking = await bookingService.createBooking({
-//       userId,
-//       showId,
-//       numSeats,
-//       amount,
-//       seats,
-//     });
-//     res.status(201).json(booking);
-//   } catch (err) {
-//     res.status(400).json({ error: err.message });
-//   }
-// };
-
-
-
-
-
-
-
-
-
-
-
-// import { getBookedSeats, createBooking } from '../services/booking.service.js';
-
-// import * as bookingService from "../services/booking.service.js";
-
-// export const getBookedSeats = async (req, res) => {
-//   try {
-//     const showId = parseInt(req.params.showId);
-//     const seats = await bookingService.getBookedSeats(showId);
-//     res.json(seats);
-//   } catch (err) {
-//     res.status(500).json({ error: err.message });
-//   }
-// };
-
-// export const createBooking = async (req, res) => {
-//   const userId = req.user.id;
-//   const { showId, numSeats, amount, seats } = req.body;
-
-//   try {
-//     const booking = await bookingService.createBooking({
-//       userId,
-//       showId,
-//       numSeats,
-//       amount,
-//       seats,
-//     });
-//     res.status(201).json(booking);
-//   } catch (err) {
-//     res.status(400).json({ error: err.message });
-//   }
-// };
-
-
-
-
-
-
-// import { getBookedSeats as getBookedSeatsService, createBooking as createBookingService } from '../services/booking.service.js';
-
-// export const getBookedSeats = async (req, res) => {
-//   try {
-//     const showId = parseInt(req.params.showId);
-//     const seats = await getBookedSeatsService(showId);
-//     res.json(seats);
-//   } catch (err) {
-//     res.status(500).json({ error: err.message });
-//   }
-// };
-
-// export const createBooking = async (req, res) => {
-//   const userId = req.user.id;
-//   const { showId, numSeats, amount, seats } = req.body;
-
-//   try {
-//     const booking = await createBookingService({
-//       userId,
-//       showId,
-//       numSeats,
-//       amount,
-//       seats,
-//     });
-//     res.status(201).json(booking);
-//   } catch (err) {
-//     res.status(400).json({ error: err.message });
-//   }
-// };
-
-
-// export const createBooking = async (req, res) => {
-//     try {
-//       const { showId, numSeats, amount, seats, paymentMethod } = req.body;
-//       const userId = req.user.id;
-  
-//       const booking = await bookingService.createBooking({
-//         userId,
-//         showId,
-//         numSeats,
-//         amount,
-//         seats,
-//         paymentMethod,
-//       });
-  
-//       res.status(201).json(booking);
-//     } catch (err) {
-//       res.status(400).json({ error: err.message });
-//     }
-//   };
-  
-
-
-
-
 import { createBookingWithPayment, getUserBookings } from '../services/booking.service.js';
 import { getShowSeatData } from '../services/booking.service.js';
 import { updateUserBooking, deleteUserBooking } from '../services/booking.service.js';
@@ -217,5 +85,20 @@ export const fetchAllBookings = async (req, res) => {
   } catch (err) {
     console.error('Error fetching bookings:', err);
     res.status(500).json({ error: 'Failed to fetch bookings' });
+  }
+};
+
+
+import { getBookingsForManagerShow } from '../services/booking.service.js';
+
+export const getManagerShowBookings = async (req, res) => {
+  try {
+    const { showId } = req.params;
+    const managerEmail = req.user.email; 
+
+    const bookings = await getBookingsForManagerShow(managerEmail, parseInt(showId));
+    res.status(200).json(bookings);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
   }
 };

@@ -6,7 +6,6 @@ import {
 
 import Login from './pages/Login';
 import Register from './pages/Register';
-import Dashboard from './pages/Dashboard';
 import MoviesPage from './pages/MoviesPage';
 import Manager from './pages/Manager';
 import Theater from './pages/Theater';
@@ -22,6 +21,9 @@ import MovieDetails from './pages/MovieDetails';
 import BookingHistory from './pages/BookingHistory';
 import AllBookings from './pages/AllBookings' 
 import ManagerVerify from './pages/ManagerVerify';
+import ManagerShowsList from './pages/ManagerShowsList';
+import ManagerShowBookings from './pages/ManagerShowBookings';
+import Movies from './pages/Movies';
 
 function App() {
   return (
@@ -29,7 +31,6 @@ function App() {
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/register" element={<Register/>} />
-        <Route path="/dashboard" element={<Dashboard/>} />
         <Route path="/moviespage" element={<MoviesPage/>} />
         <Route path="/manager" element={<Manager/>} />
         <Route path="/theater" element={<Theater/>} />
@@ -41,14 +42,13 @@ function App() {
         <Route path="/movie/:movieId/theatres" element={<MovieTheatres />} />
         <Route path="/shows/:movieId/:theatreId" element={<MovieShowtimes />} />
         <Route path="/booking/:showId" element={<BookingPage />} />
-        {/* <Route path="/movie/:movieId" element={<MovieShows />} /> */}
-        {/* <Route path="/movie/:movieid" element={<MovieDetails/>}/> */}
         <Route path="/movies/:movieId" element={<MovieDetails />} />
         <Route path="/booking/history" element={<BookingHistory />} />
-        {/* <Route path="/shows/:bookingshowid/edit" element={<EditBooking />} /> */}
         <Route path="/allbookings" element={<AllBookings />} />
         <Route path="/manager/verify" element={<ManagerVerify />} />
-
+        <Route path="/manager/shows" element={<ManagerShowsList />} />
+        <Route path="/manager/show/:showId/bookings" element={<ManagerShowBookings />} />
+        <Route path="/movies" element={<Movies />} />
       </Routes>
     </Router>
   );

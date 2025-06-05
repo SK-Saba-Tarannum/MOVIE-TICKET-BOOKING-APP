@@ -1,4 +1,3 @@
-// routes/user.routes.js
 import express from 'express';
 import { registerUser, getUsers, deleteUser } from '../controllers/user.controller.js';
 import { authenticate,authorizeRoles } from '../middleware/authmiddleware.js';

@@ -10,9 +10,6 @@ export const getAllMovies = async () => {
   return await prisma.movie.findMany();
 };
 
-// export const getMovieById = async (id) => {
-//   return await prisma.movie.findUnique({ where: { id: Number(id) } });
-// };
 
 export const getMovieById = async (id) => {
   return await prisma.movie.findUnique({

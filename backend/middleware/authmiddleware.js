@@ -2,9 +2,6 @@ import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
 dotenv.config();
 
-
-// import jwt from 'jsonwebtoken';
-
 export const authenticate = (req, res, next) => {
   const authHeader = req.headers.authorization;
 
@@ -19,7 +16,7 @@ export const authenticate = (req, res, next) => {
       return res.status(403).json({ error: 'Forbidden: Invalid token' });
     }
 
-    console.log('Decoded JWT user:', user); // ✅ moved here — user is available now
+    console.log('Decoded JWT user:', user); 
 
     req.user = {
       id: user.userId ?? user.id,

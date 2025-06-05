@@ -65,7 +65,7 @@ const ManagerVerify = () => {
                   <p><strong>Name:</strong> {manager.name}</p>
                   <p><strong>Theatre:</strong> {manager.theatreName}</p>
                   <p><strong>Email:</strong> {manager.email}</p>
-                  <button onClick={()=>{navigate("/shows")}} className='bg-teal-400'>Lets Go</button>
+                  <button onClick={()=>{navigate("/shows")}} className='bg-teal-400 p-2 rounded mt-4 text-white '>Lets Go</button>
                 </div>
               )}
             </>

@@ -122,3 +122,35 @@ export const getFilteredShows = async (movieId, theatreId, selectedDate) => {
 
   return shows;
 };
+
+
+// import prisma from '../prismaClient.js';
+
+export const getShowsForManager = async (managerEmail) => {
+  const manager = await prisma.manager.findFirst({
+    where: { email: managerEmail }
+  });
+
+  if (!manager) {
+    throw new Error('Manager not found.');
+  }
+
+  const theater = await prisma.theatre.findFirst({
+    where: {
+      name: manager.theatreName
+    },
+    include: {
+      shows: {
+        include: {
+          movie: true
+        }
+      }
+    }
+  });
+
+  if (!theater) {
+    throw new Error('Theater not found for the manager.');
+  }
+
+  return theater.shows;
+};

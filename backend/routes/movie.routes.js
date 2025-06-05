@@ -8,13 +8,9 @@ import {
 } from '../controllers/movie.controller.js';
 
 import { authenticate, authorizeRoles } from '../middleware/authmiddleware.js';
-// import { getMovieById } from '../controllers/movie.controller.js';
 
 const router = express.Router();
 router.get('/',authenticate, getAllMovies);
-
-// router.use(authenticate);
-// router.use(authorizeRoles('ADMIN'));
 
 router.post('/',authenticate,authorizeRoles, createMovie);
 router.get('/:id',authenticate, getMovieById);

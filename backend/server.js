@@ -5,13 +5,11 @@ import userRoutes from './routes/user.routes.js';
 import authRoutes from './routes/auth.routes.js';
 import movieRoutes from './routes/movie.routes.js'; 
 import managerRoutes from './routes/manager.routes.js';
-import theatreRoutes from './routes/theatre.routes.js'; // adjust path
+import theatreRoutes from './routes/theatre.routes.js'; 
 import showRoutes from './routes/show.routes.js';
 import bookingRoutes from  './routes/booking.routes.js';
 
 import { PrismaClient } from '@prisma/client';
-// const bookingRoutes = require('./routes/booking.routes');
-
 const prisma = new PrismaClient();
 
 
@@ -27,7 +25,6 @@ app.use('/api/managers', managerRoutes);
 app.use('/api/theatres', theatreRoutes);
 app.use('/api/shows', showRoutes);
 app.use('/api/bookings', bookingRoutes);
-// app.use('/api/bookings', bookingRoutes);
 
 
 app.use((err, req, res, next) => {
@@ -41,3 +38,5 @@ prisma.$connect()
 
 const PORT = process.env.PORT || 5001;
 app.listen(PORT, () => console.log(process.env.DATABASE_URL,process.env.JWT_SECRET,`Server running on port ${PORT}`));
+
+

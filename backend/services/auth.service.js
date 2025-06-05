@@ -18,39 +18,17 @@ export const registerUser = async ({ name, email, password }) => {
   return { user: { id: user.id, name: user.name, email: user.email, role: user.role }, token };
 };
 
-// export const loginUser = async ({ email, password }) => {
-//   const user = await prisma.user.findUnique({ where: { email } });
-//   if (!user) throw new Error('Invalid credentials');
-
-//   const isMatch = await comparePassword(password, user.password);
-//   if (!isMatch) throw new Error('Invalid credentials');
-//   console.log("User found:", isMatch);
-
-//   const token = generateToken(user.id);
-//   return { user: { id: user.id, name: user.name, email: user.email, role: user.role }, token };
-// };
-
-// const generateToken = (userId) => {
-//   return jwt.sign({ id: userId }, process.env.JWT_SECRET, { expiresIn: '7d' });
-// };
-
-
-
 
 export const loginUser = async ({ email, password }) => {
-  // Find user by email
   const user = await prisma.user.findUnique({ where: { email } });
   if (!user) throw new Error('Invalid credentials');
 
-  // Verify password match
   const isMatch = await comparePassword(password, user.password);
   if (!isMatch) throw new Error('Invalid credentials');
   console.log("User found:", isMatch);
 
-  // Generate token including id, role, email
   const token = generateToken(user);
 
-  // Return user info and token
   return {
     user: {
       id: user.id,
@@ -62,7 +40,6 @@ export const loginUser = async ({ email, password }) => {
   };
 };
 
-// Token generation helper: include id, role, email in payload
 const generateToken = (user) => {
   return jwt.sign(
     {

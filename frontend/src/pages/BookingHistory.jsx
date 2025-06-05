@@ -147,7 +147,7 @@ const BookingHistory = () => {
                         onClick={() => handleDelete(booking.id)}
                         className="bg-red-400 text-white px-3 py-1 rounded hover:bg-red-500"
                       >
-                        Delete
+                        Cancel
                       </button>
                     </>
                   )}

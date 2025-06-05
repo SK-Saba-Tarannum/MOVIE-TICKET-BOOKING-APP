@@ -2,6 +2,7 @@ import * as showService from '../services/show.service.js';
 import { getShowsByMovieId } from '../services/show.service.js';
 import { getTheatresByMovieId } from '../services/show.service.js';
 import { getFilteredShows } from '../services/show.service.js';
+import { getShowsForManager } from '../services/show.service.js';
 
 export const createShow = async (req, res) => {
   try {
@@ -55,22 +56,6 @@ export const deleteShow = async (req, res) => {
 };
 
 
-// export const getShowsForMovie = async (req, res) => {
-//   const movieId = Number(req.params.movieId);
-
-//   try {
-//     const shows = await getShowsByMovieId(movieId);
-//     if (!shows || shows.length === 0) {
-//       return res.status(404).json({ message: 'No shows found for this movie' });
-//     }
-
-//     res.json(shows);
-//   } catch (err) {
-//     console.error('Error fetching shows:', err);
-//     res.status(500).json({ message: 'Server error' });
-//   }
-// };
-
 
 export const getShowsForMovie = async (req, res) => {
   const movieId = Number(req.params.movieId);
@@ -119,6 +104,20 @@ export const getShowsByMovieTheatreAndDate = async (req, res) => {
   } catch (error) {
     console.error('Error fetching shows:', error);
     res.status(500).json({ error: 'Failed to fetch shows' });
+  }
+};
+
+
+
+export const getManagerShows = async (req, res) => {
+  try {
+    const managerEmail = req.user.email; 
+    const shows = await getShowsForManager(managerEmail);
+    res.status(200).json(shows);
+  } catch (error) {
+    console.error('Error in getManagerShows:', error.message);
+
+    res.status(400).json({ error: error.message });
   }
 };
 

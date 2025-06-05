@@ -2,7 +2,6 @@ import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
 import * as managerService from '../services/manager.service.js';
-// const managerService = require('../services/manager.service');
 import { findManagerByEmail } from '../services/manager.service.js';
 
 export const createManager = async (req, res) => {
@@ -50,33 +49,6 @@ export const createManager = async (req, res) => {
       res.status(500).json({ error: 'Failed to delete manager' });
     }
   };
-
-
-
-// export const verifyManager = async (req, res) => {
-//   try {
-//     const { role, email } = req.user;
-
-//     if (role !== 'MANAGER') {
-//       return res.status(403).json({ message: 'Access denied: Not a manager' });
-//     }
-
-//     const manager = await findManagerByEmail(email);
-
-//     if (!manager) {
-//       return res.status(404).json({ message: 'No manager record found in database' });
-//     }
-
-//     return res.status(200).json({
-//       message: `Verified: Manager ${manager.fullName} of ${manager.theatreName}`,
-//       manager,
-//     });
-//   } catch (error) {
-//     console.error('Manager verification error:', error);
-//     res.status(500).json({ message: 'Internal server error' });
-//   }
-// };
-
 
 
 export const verifyManager = async (req, res) => {

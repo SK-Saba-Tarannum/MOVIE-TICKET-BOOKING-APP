@@ -188,3 +188,49 @@ export const getAllBookings = async () => {
   });
 };
 
+// import prisma from '../prismaClient.js';
+
+export const getBookingsForManagerShow = async (managerEmail, showId) => {
+  const theater = await prisma.theatre.findFirst({
+    where: {
+      shows: {
+        some: { id: showId }
+      }
+    },
+    include: {
+      shows: true,
+    }
+  });
+
+  if (!theater) throw new Error('Theater not found for this show.');
+
+  const manager = await prisma.manager.findFirst({
+    where: {
+      email: managerEmail,
+      theatreName: theater.name
+    }
+  });
+
+  if (!manager) throw new Error('Unauthorized manager.');
+
+  const bookings = await prisma.booking.findMany({
+    where: {
+      showId
+    },
+    include: {
+      user: true,
+      payment: true,
+      show: {
+        include: {
+          movie: true,
+          theatre: true
+        }
+      }
+    },
+    orderBy: {
+      createdAt: 'desc'
+    }
+  });
+
+  return bookings;
+};

@@ -76,8 +76,8 @@ const BookingPage = () => {
     }
   };
 
-  const columns = 20  ;
-  const rows = Math.ceil(totalSeats / columns);
+  // const columns = 20  ;
+  // const rows = Math.ceil(totalSeats / columns);
 
   return (
     <>
