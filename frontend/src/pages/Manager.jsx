@@ -13,7 +13,7 @@ const Manager = () => {
 
   const fetchManagers = async () => {
     try {
-      const res = await axios.get('http://localhost:5001/api/managers', {
+      const res = await axios.get('https://movie-ticket-booking-app-2.onrender.com/api/managers', {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
@@ -36,7 +36,7 @@ const Manager = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5001/api/managers/', form, {
+      await axios.post('https://movie-ticket-booking-app-2.onrender.com/api/managers/', form, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
@@ -51,7 +51,7 @@ const Manager = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:5001/api/managers/${id}`, {
+      await axios.delete(`https://movie-ticket-booking-app-2.onrender.com/api/managers/${id}`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
@@ -71,7 +71,6 @@ const Manager = () => {
             Managers Management
           </h1>
 
-          {/* Manager Form */}
           <div className="bg-gray-900 p-5 sm:p-6 md:p-8 rounded-3xl shadow-2xl max-w-full sm:max-w-3xl mx-auto mb-10 border border-teal-500">
             <h2 className="text-xl sm:text-2xl font-semibold mb-5 sm:mb-6 text-teal-400">
               Add New Manager
@@ -126,7 +125,7 @@ const Manager = () => {
             </form>
           </div>
 
-          {/* Manager List */}
+          
           <div className="max-w-full sm:max-w-6xl mx-auto space-y-5 sm:space-y-6">
             {managers.map((manager) => (
               <div

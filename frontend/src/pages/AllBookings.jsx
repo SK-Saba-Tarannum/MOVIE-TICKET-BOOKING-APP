@@ -16,7 +16,7 @@ import {
 
 import Navbar from './Navbar';
 
-const ITEMS_PER_PAGE = 6  ; // Customize how many bookings per page
+const ITEMS_PER_PAGE = 6  ; 
 
 const AllBookings = () => {
   const [bookings, setBookings] = useState([]);
@@ -24,23 +24,19 @@ const AllBookings = () => {
 
   useEffect(() => {
     axios
-      .get('http://localhost:5001/api/bookings/all', {
+      .get('https://movie-ticket-booking-app-2.onrender.com/api/bookings/all', {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
       })
       .then((res) => setBookings(res.data))
       .catch((err) => console.error('Error fetching bookings', err));
   }, []);
 
-  // Calculate total pages
   const totalPages = Math.ceil(bookings.length / ITEMS_PER_PAGE);
-
-  // Get bookings for current page
   const currentBookings = bookings.slice(
     (currentPage - 1) * ITEMS_PER_PAGE,
     currentPage * ITEMS_PER_PAGE
   );
 
-  // Handler for page change
   const goToPage = (page) => {
     if (page < 1 || page > totalPages) return;
     setCurrentPage(page);

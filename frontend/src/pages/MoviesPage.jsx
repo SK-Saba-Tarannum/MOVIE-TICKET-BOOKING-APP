@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { Users, Theater, Shield,Film,Trash2,Edit2, BookOpen } from 'lucide-react'; // Lucide icons
 import Navbar from './Navbar';
 
-const API_URL = 'http://localhost:5001/api/movies/';
+const API_URL = 'https://movie-ticket-booking-app-2.onrender.com/api/movies/';
 
 const MovieCard = ({ movie, onEdit, onDelete }) => (
   <div className="bg-gray-800 p-5 rounded-2xl shadow-xl  text-white relative">

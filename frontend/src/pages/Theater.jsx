@@ -10,7 +10,7 @@ const Theatre = () => {
 
   const fetchTheatres = async () => {
     try {
-      const res = await axios.get('http://localhost:5001/api/theatres', {
+      const res = await axios.get('https://movie-ticket-booking-app-2.onrender.com/api/theatres', {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
       });
       setTheatres(res.data);
@@ -43,9 +43,9 @@ const Theatre = () => {
       const headers = { Authorization: `Bearer ${localStorage.getItem('token')}` };
 
       if (editingId) {
-        await axios.put(`http://localhost:5001/api/theatres/${editingId}`, form, { headers });
+        await axios.put(`https://movie-ticket-booking-app-2.onrender.com/api/theatres/${editingId}`, form, { headers });
       } else {
-        await axios.post('http://localhost:5001/api/theatres', form, { headers });
+        await axios.post('https://movie-ticket-booking-app-2.onrender.com/api/theatres', form, { headers });
       }
 
       setForm({ name: '', location: '', contact: '' });
@@ -59,7 +59,7 @@ const Theatre = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:5001/api/theatres/${id}`, {
+      await axios.delete(`https://movie-ticket-booking-app-2.onrender.com/api/theatres/${id}`, {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
       });
       fetchTheatres();
@@ -74,7 +74,6 @@ const Theatre = () => {
     <Navbar/>
     <div className="min-h-screen bg-[#121212] text-white p-6">
       
-      {/* Header + Add Button Row */}
       <div className="max-w-6xl mx-auto  flex justify-between items-center mb-8 px-4 sm:px-0">
         <h1 className="text-3xl font-bold text-teal-400 whitespace-nowrap">
           Theatres Management
@@ -88,9 +87,6 @@ const Theatre = () => {
         </button>
       </div>
 
-
-
-      {/* Theatre List */}
       <div className="max-w-5xl mx-auto space-y-4">
         {theatres.map((theatre) => (
           <div

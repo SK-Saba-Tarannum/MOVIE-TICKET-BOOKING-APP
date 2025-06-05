@@ -23,7 +23,7 @@ const ManagerVerify = () => {
       }
 
       try {
-        const res = await axios.get('http://localhost:5001/api/managers/verify', {
+        const res = await axios.get('https://movie-ticket-booking-app-2.onrender.com/api/managers/verify', {
           headers: { Authorization: `Bearer ${token}` },
         });
 

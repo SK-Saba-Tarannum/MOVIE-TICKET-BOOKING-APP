@@ -26,7 +26,7 @@ const MovieShowtimes = () => {
 
     try {
       const response = await axios.get(
-        `http://localhost:5001/api/shows/${movieId}/${theatreId}?date=${date}`,
+        `https://movie-ticket-booking-app-2.onrender.com/api/shows/${movieId}/${theatreId}?date=${date}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,

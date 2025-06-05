@@ -13,7 +13,7 @@ const MovieShows = () => {
     const token = localStorage.getItem("token");
     const fetchShows = async () => {
       try {
-        const res = await axios.get(`http://localhost:5001/api/shows/movie/${movieId}`, {
+        const res = await axios.get(`https://movie-ticket-booking-app-2.onrender.com/api/shows/movie/${movieId}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setShows(res.data);

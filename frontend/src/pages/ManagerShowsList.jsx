@@ -25,7 +25,7 @@ const ManagerShowsList = () => {
   const fetchShows = async () => {
     setLoading(true);
     try {
-      const res = await axios.get('http://localhost:5001/api/shows/manager/shows', {
+      const res = await axios.get('https://movie-ticket-booking-app-2.onrender.com/api/shows/manager/shows', {
         headers: token ? { Authorization: `Bearer ${token}` } : {},
       });
       setShows(res.data);
@@ -74,11 +74,11 @@ const ManagerShowsList = () => {
 
     try {
       if (isEditing) {
-        await axios.put(`http://localhost:5001/api/shows/${form.id}`, payload, {
+        await axios.put(`https://movie-ticket-booking-app-2.onrender.com/api/shows/${form.id}`, payload, {
           headers: token ? { Authorization: `Bearer ${token}` } : {},
         });
       } else {
-        await axios.post('http://localhost:5001/api/shows/', payload, {
+        await axios.post('https://movie-ticket-booking-app-2.onrender.com/api/shows/', payload, {
           headers: token ? { Authorization: `Bearer ${token}` } : {},
         });
       }
@@ -108,7 +108,7 @@ const ManagerShowsList = () => {
   const handleDelete = async id => {
     if (window.confirm('Are you sure you want to delete this show?')) {
       try {
-        await axios.delete(`http://localhost:5001/api/shows/${id}`, {
+        await axios.delete(`https://movie-ticket-booking-app-2.onrender.com/api/shows/${id}`, {
           headers: token ? { Authorization: `Bearer ${token}` } : {},
         });
         fetchShows();

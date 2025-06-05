@@ -21,7 +21,7 @@ function Register() {
     }
   
     try {
-      const res = await axios.post('http://localhost:5001/api/auth/signup', {
+      const res = await axios.post('https://movie-ticket-booking-app-2.onrender.com/api/auth/signup', {
         name,
         email,
         password,

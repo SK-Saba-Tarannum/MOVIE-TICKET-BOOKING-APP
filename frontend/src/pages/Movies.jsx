@@ -12,7 +12,7 @@ const Movies = () => {
   useEffect(() => {
     const fetchMovies = async () => {
       try {
-        const res = await axios.get('http://localhost:5001/api/movies', {
+        const res = await axios.get('https://movie-ticket-booking-app-2.onrender.com/api/movies', {
           headers: token ? { Authorization: `Bearer ${token}` } : {},
         });
         setMovies(res.data);

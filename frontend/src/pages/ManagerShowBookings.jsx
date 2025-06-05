@@ -25,7 +25,7 @@ const ManagerShowBookings = () => {
       const token = localStorage.getItem('token');
       try {
         const res = await axios.get(
-          `http://localhost:5001/api/bookings/manager/show/${showId}/bookings`,
+          `https://movie-ticket-booking-app-2.onrender.com/bookings/manager/show/${showId}/bookings`,
           {
             headers: {
               Authorization: `Bearer ${token}`,

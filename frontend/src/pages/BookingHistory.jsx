@@ -12,7 +12,7 @@ const BookingHistory = () => {
  
   const fetchBookings = async () => {
     try {
-      const res = await axios.get('http://localhost:5001/api/bookings/history', {
+      const res = await axios.get('https://movie-ticket-booking-app-2.onrender.com/api/bookings/history', {
         headers: { Authorization: `Bearer ${token}` },
       });
       setBookings(res.data);
@@ -29,7 +29,7 @@ const BookingHistory = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:5001/api/bookings/${id}`, {
+      await axios.delete(`https://movie-ticket-booking-app-2.onrender.com/api/bookings/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       toast.success('Booking deleted');
@@ -47,7 +47,7 @@ const BookingHistory = () => {
       const amount = booking.show.pricePerSeat * numSeats;
 
       await axios.put(
-        `http://localhost:5001/api/bookings/${booking.id}`,
+        `https://movie-ticket-booking-app-2.onrender.com/api/bookings/${booking.id}`,
         { seats: updatedSeats, numSeats, amount },
         { headers: { Authorization: `Bearer ${token}` } }
       );

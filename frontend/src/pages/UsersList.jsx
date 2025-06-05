@@ -7,7 +7,7 @@ const UsersList = () => {
 
   const fetchUsers = async () => {
     try {
-      const res = await axios.get('http://localhost:5001/api/users', {
+      const res = await axios.get('https://movie-ticket-booking-app-2.onrender.com/api/users', {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
       });
       setUsers(res.data);
@@ -24,7 +24,7 @@ const UsersList = () => {
     if (!window.confirm('Are you sure you want to delete this user?')) return;
 
     try {
-      await axios.delete(`http://localhost:5001/api/users/${userId}`, {
+      await axios.delete(`https://movie-ticket-booking-app-2.onrender.com/api/users/${userId}`, {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
       });
       fetchUsers();

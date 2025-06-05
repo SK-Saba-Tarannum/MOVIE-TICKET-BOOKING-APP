@@ -15,7 +15,7 @@ const Shows = () => {
   const fetchShows = async () => {
     setLoading(true);
     try {
-      const res = await axios.get('http://localhost:5001/api/shows/', {
+      const res = await axios.get('https://movie-ticket-booking-app-2.onrender.com/api/shows/', {
         headers: token ? { Authorization: `Bearer ${token}` } : {},
       });
       setShows(Array.isArray(res.data) ? res.data : res.data.shows || []);
