@@ -15,7 +15,20 @@ const prisma = new PrismaClient();
 
 dotenv.config();
 const app = express();
-app.use(cors());
+// app.use(cors());
+// app.use(cors({
+//   methods: ['GET', 'POST', 'PUT', 'DELETE'],
+//   origin: ['http://localhost:5173', 'https://movie-ticket-booking-app-3.onrender.com'],
+//   credentials: true
+// }));
+app.use(cors({
+  origin: '*', // or your frontend origin
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
+
+
+
 app.use(express.json());
 
 app.use('/api/users', userRoutes);

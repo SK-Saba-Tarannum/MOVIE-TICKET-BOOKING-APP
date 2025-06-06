@@ -24,6 +24,8 @@ import ManagerVerify from './pages/ManagerVerify';
 import ManagerShowsList from './pages/ManagerShowsList';
 import ManagerShowBookings from './pages/ManagerShowBookings';
 import Movies from './pages/Movies';
+import MovieFormPage from './pages/MovieFormPage';
+
 
 function App() {
   return (
@@ -49,6 +51,8 @@ function App() {
         <Route path="/manager/shows" element={<ManagerShowsList />} />
         <Route path="/manager/show/:showId/bookings" element={<ManagerShowBookings />} />
         <Route path="/movies" element={<Movies />} />
+        <Route path="/moviespage/edit/:id" element={<MovieFormPage />} />
+
       </Routes>
     </Router>
   );
