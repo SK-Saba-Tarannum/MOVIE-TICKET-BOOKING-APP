@@ -2,6 +2,7 @@ import { createBookingWithPayment, getUserBookings } from '../services/booking.s
 import { getShowSeatData } from '../services/booking.service.js';
 import { updateUserBooking, deleteUserBooking } from '../services/booking.service.js';
 import { getAllBookings } from '../services/booking.service.js';
+import { getBookingsForManagerShow } from '../services/booking.service.js';
 
 export const createBooking = async (req, res) => {
   try {
@@ -89,7 +90,6 @@ export const fetchAllBookings = async (req, res) => {
 };
 
 
-import { getBookingsForManagerShow } from '../services/booking.service.js';
 
 export const getManagerShowBookings = async (req, res) => {
   try {

@@ -23,9 +23,10 @@ const ManagerShowBookings = () => {
   useEffect(() => {
     const fetchBookings = async () => {
       const token = localStorage.getItem('token');
+      console.log(showId,token)
       try {
         const res = await axios.get(
-          `https://movie-ticket-booking-app-2.onrender.com/bookings/manager/show/${showId}/bookings`,
+          `https://movie-ticket-booking-app-2.onrender.com/api/bookings/manager/show/${showId}/bookings`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
