@@ -6,7 +6,7 @@ const API_URL = 'https://movie-ticket-booking-app-2.onrender.com/api/movies/';
 
 const MovieFormPage = () => {
   const navigate = useNavigate();
-  const { id } = useParams(); // movie id if editing
+  const { id } = useParams(); 
   const [form, setForm] = useState({
     title: '',
     description: '',
@@ -20,7 +20,7 @@ const MovieFormPage = () => {
 
   useEffect(() => {
     if (id) {
-      // Fetch movie details to edit
+    
       const fetchMovie = async () => {
         try {
           const token = localStorage.getItem('token');
@@ -48,65 +48,6 @@ const MovieFormPage = () => {
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
-
-//   const handleSubmit = async (e) => {
-//     e.preventDefault();
-//     setLoading(true);
-//     try {
-//       const token = localStorage.getItem('token');
-//       const preparedForm = {
-//         ...form,
-//         duration: Number(form.duration),
-//         releaseDate: new Date(form.releaseDate),
-//       };
-
-//       if (id) {
-//         await axios.put(`${API_URL}${id}`, preparedForm, {
-//           headers: { Authorization: `Bearer ${token}` },
-//         });
-//       } else {
-//         await axios.post(API_URL, preparedForm, {
-//           headers: { Authorization: `Bearer ${token}` },
-//         });
-//       }
-//       navigate('/moviespage');
-//     } catch (err) {
-//       console.error('Error saving movie:', err.response?.data || err.message);
-//     } finally {
-//       setLoading(false);
-//     }
-//   };
-
-// const handleSubmit = async (e) => {
-//     e.preventDefault();
-//     const start = performance.now();
-//     setLoading(true);
-//     try {
-//       const token = localStorage.getItem('token');
-//       const preparedForm = {
-//         ...form,
-//         duration: Number(form.duration),
-//         releaseDate: new Date(form.releaseDate),
-//       };
-  
-//       if (id) {
-//         await axios.put(`${API_URL}${id}`, preparedForm, {
-//           headers: { Authorization: `Bearer ${token}` },
-//         });
-//       } else {
-//         await axios.post(API_URL, preparedForm, {
-//           headers: { Authorization: `Bearer ${token}` },
-//         });
-//       }
-//       const end = performance.now();
-//       console.log(`API call duration: ${end - start}ms`);
-//       navigate('/moviespage');
-//     } catch (err) {
-//       console.error('Error saving movie:', err.response?.data || err.message);
-//     } finally {
-//       setLoading(false);
-//     }
-//   };
 
 
 const handleSubmit = async (e) => {
